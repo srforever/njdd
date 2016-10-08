@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>农机综合调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/conduct/conduct.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
+    <script src="../../src/common/getmessages.js"></script>
+</head>
+<body>
+    <div data-role="page" id="detailinfopage">
+        <div data-role="header">
+            <a data-role="button" href="queryregionnjinfo.html" data-icon="back" data-transition="slide">返回</a>
+            <h1>详细信息</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <!--具体信息-->
+             <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="name">
+                                &nbsp;用户名：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="name" id="detailinfopage_username" placeholder="您的姓名..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+              <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mobile_phone">
+                                &nbsp;&nbsp;手机：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="mobile_phone" id="detailinfopage_phone" placeholder="您的手机号码..." value="" type="tel" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="leixing">
+                                农机类型：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="leixing" id="detailinfopage_car_type" placeholder="农机类型..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="danwei">
+                                所属农场：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="danwei" id="detailinfopage_unit_name" placeholder="您的所属农场..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+         
+             <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="name">
+                                &nbsp;车牌号：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="name" id="detailinfopage_car_code" placeholder="车牌号..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="mali">
+                                &nbsp;&nbsp;马力： 
+                            </label>
+                        </td>
+                        <td>
+                            <input name="mali" id="detailinfopage_car_horsepower" placeholder="马力..." value="" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+          
+           
+        </div>
+
+      <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            <form method="post" >
+                <div class="ui-field-contain">
+                    <label for="info">发送消息:</label>
+                    <textarea  id="writemessage"></textarea>
+                </div>
+                <div align="center">
+                    <a href="#" data-role="button" data-theme="a" data-inline="true" id="detailinfopage_smsbtn" onclick="detailinfopage_smsbtn()">发送OK</a>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

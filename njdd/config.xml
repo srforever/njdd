@@ -1,0 +1,64 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:android   = "http://schemas.android.com/apk/res/android"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.bsdmasterindex.phonegapgeneric-boilerplate2"
+        version     = "0.1"
+        versionCode = "10" >
+		        <!-- versionCode is optional and Android only -->
+        <preference name="phonegap-version" value="3.5.0" />
+    <name>滴滴农机</name>
+    <description>
+     滴滴农机
+    </description>
+    <author email="#" name="#">
+        gislt
+    </author>
+    
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.geolocation" />  
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+
+  <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+ 
+
+            <!-- Android SECTION -->
+                <platform name="android" >
+            <!-- PREFERENCE * PREFERENCE * PREFERENCE -->
+            <preference name="SplashScreen" value="splash" />
+            <preference name="SplashScreenDelay" value="5000" />
+            <!-- ICON * ICON * ICON -->
+            <icon src="res/drawable-ldpi/icon_48x48_ldpi.png"   gap:qualifier="ldpi" />
+            <icon src="res/drawable-mdpi/icon_48x48_mdpi.png"   gap:qualifier="mdpi" />
+            <icon src="res/drawable-hdpi/icon_72x72_hdpi.png"   gap:qualifier="hdpi" />
+            <icon src="res/drawable-xhdpi/icon_96x96_xhpdi.png" gap:qualifier="xhdpi" />
+            <!-- SPLASH * SPLASH * SPLASH -->
+            <splash src="splash.png" /> <!-- I have not found any documentation for this, but it appears deprecated -->
+            <splash src="res/android/splashscreen-200x320-ldpi.png"   gap:qualifier="port-ldpi" />
+            <splash src="res/android/splashscreen-320x480-mdpi.png"   gap:qualifier="port-mdpi" />
+            <splash src="res/android/splashscreen-480x800-hdpi.png"   gap:qualifier="port-hdpi" />
+            <splash src="res/android/splashscreen-720x1280-xhdpi.png" gap:qualifier="port-xhdpi" />
+        </platform>
+
+        <gap:config-file platform="android" parent="/manifest/application" >
+            <!-- Add Android extensions here. SEE: http://docs.build.phonegap.com/en_US/configuring_config_file_element.md.html#Config%20File%20Elements -->
+        </gap:config-file>
+
+  <access origin="*" />
+  
+</widget>

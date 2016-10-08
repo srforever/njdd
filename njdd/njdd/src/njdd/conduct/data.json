@@ -1,0 +1,39 @@
+﻿{
+    "token": "1",
+    "message": {
+        "request": "1",
+        "statusCode": "1",
+        "reasonPhrase": "1"
+    },
+    "result": {
+        "items": [
+            {
+                "username": "小明",
+                "userid": "m11111",
+                "carcode": "皖M110",
+                "workstate": "闲置",
+                "carid": "2222",
+                "x": "118.312675",
+                "y": "32.276035"
+            },
+            {
+                "username": "小红",
+                "userid": "h11111",
+                "carcode": "皖M120",
+                "workstate": "闲置",
+                "carid": "2222",
+                "x": "118.318675",
+                "y": "32.266035"
+            },
+            {
+                "username": "小王",
+                "userid": "w11111",
+                "carcode": "皖M130",
+                "workstate": "闲置",
+                "carid": "2222",
+                "x": "118.314675",
+                "y": "32.256035"
+            }
+        ]
+    }
+}

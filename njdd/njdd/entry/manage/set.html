@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>滴滴农机智能调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+   <!-- <script src="../../src/njdd/manage/person.js"></script>-->
+    <script src="../../src/njdd/set/setting.js"></script>
+    <script src="../../src/common/getmessages.js"></script>
+    <script src="../../src/common/config.js"></script>
+    <!--<script type="text/javascript">
+        function setpage_surebtnclick() {
+            alert(sessionStorage.name);
+        }
+    </script>-->
+
+    <script src="../../src/common/jobrolecontrol.js"></script>
+</head>
+<body>
+    <div data-role="page" id="setpage">
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" id="page-header">
+            <a data-role="button" href="../mainpage.html"  data-transition="slideup" data-ajax="false" data-icon="back">返回</a>
+            <h1>设置</h1>
+        </div>
+        <!--具体信息-->
+
+        <div data-role="listview">
+            <div id="选择车牌号">
+                <p>
+                    <label for="speed">工作农机车牌号：</label></p>
+
+                <p align="center">
+                    <select name="speed" id="setpage_selectcar">
+                    </select>
+                </p>
+
+
+                <div data-role="listview" data-type="vertical">
+                    <h1>
+                        <a href="#" data-icon="star" data-role="button" id="setpage_surebtn" onclick="setpage_selectcar_change()">确&nbsp;&nbsp;定</a>
+                        <a href="../login/entry.html" data-icon="alert" data-ajax="false" data-role="button">退&nbsp;&nbsp;出</a>
+                        <a href="person information.html"data-icon="info" data-role="button"  data-ajax="false" id="dianjixinxi" >个人信息</a>
+                        <a href="personCar.html"data-icon="info" data-role="button"  data-ajax="false">个人车辆</a>
+                        <a href="manage.html" data-icon="gear" id="header_manager" data-ajax="false" data-role="button">用户管理</a>
+                        <a href="personAdd.html" data-icon="gear" id="header_personadd" data-ajax="false" data-role="button">用户添加</a>
+                        <a href="../message/message.html" data-icon="gear" data-icon="gear" data-ajax="false" data-role="button">未读消息</a>
+                         
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+

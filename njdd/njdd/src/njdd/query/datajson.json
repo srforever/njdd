@@ -1,0 +1,42 @@
+﻿{
+    "token": "1",
+    "message": {
+        "request": "1",
+        "statusCode": "1",
+        "reasonPhrase": "1"
+    },
+    "result": {
+	    "pageNumber" : 0,
+        "pageSize" : 0,
+        "total" : 3,
+        "totalPage" : 0,
+
+        "datas": [{
+                "name1": "皖M12306",
+                "hardwarenumb1": "1qaz2wsx",
+                "brand1": "宝马",
+                "horsepowe1": "100牛",
+                "carname1": "洋洋",
+                "telphone1": "12345678910",
+                "time1": "2015-10-10"
+            },
+            {
+                "name1": "皖M1",
+                "hardwarenumb1": "zxcvasdf",
+                "brand1": "奔驰",
+                "horsepowe1": "200牛",
+                "carname1": "灰太狼",
+                "telphone1": "1231231231231",
+                "time1": "2015-10-28"
+            },
+            {
+                "name1": "苏M1",
+                "hardwarenumb1": "zxcvasdf",
+                "brand1": "本田",
+                "horsepowe1": "100牛",
+                "carname1": "熊大",
+                "telphone1": "1231231231231",
+                "time1": "2015-10-22"
+            }]
+    }
+}

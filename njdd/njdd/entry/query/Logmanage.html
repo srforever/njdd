@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>地图要素添加</title>
+        <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.min.css"/>       
+        <script src="../../dep/jquery-1.8.3.min.js"></script>
+        <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>      
+        <script src="../../dep/wicket/wicket.js" type="text/javascript"></script>
+        <script src="../../dep/wicket/wicket-arcgis.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../../src/common/config.js"></script>
+        <script type="text/javascript" src="../../src/common/classie.js"></script>
+        <script src="../../src/common/getmessages.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="main-page">
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="main-header">
+                <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home">首页</a>
+                <h1>农机信息</h1>
+                
+            </div>
+            <div data-role="content" id="main-content" class="ui-content">
+              
+               <ul data-role="listview" id="logmanagepage_listview">
+            </ul>  
+                
+        
+            </div>
+            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" id="main-footer">
+    
+                
+                
+                
+
+                <div role="main" class="ui-content" data-role="fieldcontain" align="center">
+                    <label style="float: left; font-size: 15px; text-align: right;">农机编号:</label>
+                    <select id="select-native-njbh" data-native-menu="false" data-inline="true" data-role="none" style="width: 40%">
+                    </select>
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="input_startime" style="float: left; font-size: 15px; text-align: right;">开始时间:</label>
+                    <input type="date" name="input_startime" id="input_startime" value="" data-role="none" style='display: inline-block; width: 60%' />
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="input_endtime" style="float: left; font-size: 15px; text-align: right;">结束时间:</label>
+                    <input type="date" name="input_endtime" id="input_endtime" value="" data-role="none" data-inline="false" style='display: inline-block; width: 60%;' />
+                </div>
+
+                <a data-role="button" id="btn_start" style='width: 100%;'>查询</a>
+
+            </div>
+        </div>
+   
+    </body>
+    
+  
+<script type="text/javascript" src="../../dep/tmpl.js"></script> 
+<script type="text/javascript" src="../../src/njdd/query/logmanner.js"></script>
+    <script type="text/html" id="tmpl_logmanagepage_detailinfo" data-theme="c">
+        <li  data-inset="true"  data-theme="d" data-role="list-divider">农机手：<%=username%>  <span class="ui-li-count">时间：<%=recordtime%></span></li>   
+        <li  data-inset="true" data-theme="d"  > 
+                                                    <h2><%=carcode%></h2>
+                                                    <p>经度：<b><%=x%></b></p> 
+               
+                                                    <p >纬度：<b><%=y%></b></p>
+        </li>
+        <br/>
+</script>
+    
+    
+
+</html>
+

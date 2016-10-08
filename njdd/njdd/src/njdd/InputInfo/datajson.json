@@ -1,0 +1,40 @@
+﻿{
+    "token": "1",
+    "message": {
+        "request": "1",
+        "statusCode": "1",
+        "reasonPhrase": "1"
+    },
+    "result": {
+	    "pageNumber" : 0,
+        "pageSize" : 0,
+        "total" : 3,
+        "totalPage" : 0,
+
+        "datas": [{
+                "name1": "张三",
+                "work": "队长"
+           
+            },
+            {
+                "name1": "李四",
+                "work": "副队长"
+         
+            },
+			{
+                "name1": "王五",
+                "work": "队员"
+         
+            },
+			{
+                "name1": "李七",
+                "work": "队员"
+         
+            },
+            {
+                "name1": "马六",
+                "work": "队员"
+         
+            }]
+    }
+}

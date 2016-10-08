@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>农机综合调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/execution/exec.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
+    <script type="text/javascript" src="http://120.27.93.15:8080/arcgis_js_api/library/3.9/3.9/init.js"></script>
+    <script type="text/javascript" src="../../src/njdd/InputInfo/UnitInput.js"></script>
+    <script src="../../src/common/getmessages.js"></script>
+    <style type="text/css">
+        #textarea {
+            overflow: hidden;
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+        }
+    </style>
+    <script src="../../src/njdd/InputInfo/autoTextarea.js"></script>
+    <script src="../../src/common/classie.js"></script>
+</head>
+
+<body>
+    <!--机车类型录入页面-->
+    <div data-role="page" id="unitinputpage">
+        <!--头部部分-->
+        <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="page-header1">
+            <!--点击返回，将返回到（页面1——信息录入主页面）-->
+            <a data-role="button" href="InfoInput.html" data-ajax="false" data-icon="back">返回</a>
+            <h1>所属单位编辑</h1>
+        </div>
+
+        <!--中间部分-->
+        <div data-role="content">
+            <!--农机类型下拉框-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="carstyle1" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
+                        </td>
+                        <td style="width: 75%;">
+                            <select id="unitselect" onchange="unitChange()">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="carstyle1" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input id="unitInput" style="text-align: center;"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--备注和文本输入框-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
+                <!--上面有CSS样式-->
+                <textarea id="textarea"></textarea>
+            </div>
+        </div>
+        <div data-role="footer">
+            <!--删除与保存按钮-->
+            <label id="unitadd" style="color: #f00; display: none;">请填写所属单位！</label>
+            <label id="unitupdate" style="color: #f00; display: none;">请修改所属单位或备注！</label>
+            <br />
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-role="button" class="ui-btn ui-state-disabled" id="deleteunit" data-inline="true" onclick="deleteUnit();">删 除</a></li>
+                    <li><a data-role="button" class="ui-btn" id="addunit" data-inline="true" onclick="addUnit();">添加</a></li>
+                    <li><a data-role="button" class="ui-btn ui-state-disabled" id="updateunit" data-inline="true" onclick="updateUnit();">修改</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

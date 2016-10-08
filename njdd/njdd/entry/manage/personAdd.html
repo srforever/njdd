@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>滴滴农机智能调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/execution/exec.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
+    <script src="../../dep/tmpl.js"></script>
+    <script src="../../src/njdd/set/personAdd.js"></script>
+    <script src="../../src/common/getmessages.js"></script>
+</head>
+<body>
+    <!--车队人员信息页面-->
+    <div data-role="page" id="personaddpage">
+        <div data-role="header">
+            <a data-role="button" href="set.html" data-ajax="false" data-icon="back">返回</a>
+            <h1>用户添加</h1>
+        </div>
+        <!--具体信息-->
+        <div class="ui-content">
+            <fieldset data-role="controlgroup" id="personaddpage_listview" style="height: 60%; overflow-y: scroll; max-height: 400px; padding-left: 10px;">
+            </fieldset>
+        </div>
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            <div data-role="navbar">
+                <ul>
+                    <li><a data-role="button" class="ui-btn" href="set.html" onclick="userupdate()">修改</a></li>
+                    <li><a data-role="button" class="ui-btn" href="set.html">取消</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+ 
+<script type="text/html" id="user_tmpl">
+    <label for="add_<%=id%>"><%=name%>(<%=phone%>)</label>
+    <input type="checkbox" name="user" id="add_<%=id%>" value="<%=id%>" />
+</script>

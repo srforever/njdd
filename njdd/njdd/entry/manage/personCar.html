@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>滴滴农机智能调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/execution/exec.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
+    <script src="../../src/njdd/set/personCar.js"></script>
+    <script src="../../src/common/classie.js"></script>
+    <script src="../../src/common/getmessages.js"></script>
+    <!--textarea样式-->
+    <style type="text/css">
+        #textarea {
+            overflow: hidden;
+            width: 100%;
+            min-height: 150px;
+            padding: 10px;
+        }
+    </style>
+    <script src="../../src/njdd/InputInfo/autoTextarea.js"></script>
+
+</head>
+<body>
+    <div data-role="page" id="personCarpage">
+        <div data-role="header" data-tap-toggle="false" data-fullscreen="true">
+            <!--点击返回，将返回到（页面1——信息录入主页面）-->
+            <a data-role="button" href="set.html" data-ajax="false" data-icon="back">返回</a>
+            <h1>个人车辆编辑</h1>
+        </div>
+        <div data-role="content">
+            <!--农机编号下拉框-->
+<!--            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label style="float: left; font-size: 15px; text-align: right;">农机编号:</label>
+                        </td>
+                        <td style="width: 75%;">
+                            <select data-native-menu="false" style="float: left;" id="carcode" onchange="toolschange()">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>-->
+            <!--农机编号文本框-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label style="float: left; font-size: 15px; text-align: right;">农机编号:</label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input type="text" name="carbrand" style="text-align: center;" id="carcodeinput" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--农机品牌-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机品牌：</label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input type="text" name="carbrand" style="text-align: center;" id="carbrand" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--农机马力-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="carbrand" style="float: left; font-size: 15px; text-align: right;">农机马力：</label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input type="text" name="carbrand" style="text-align: center;" id="carhorsepower" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--农机类型-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label style="float: left; font-size: 15px; text-align: right;">农机类型:</label>
+                        </td>
+                        <td style="width: 75%;">
+                            <select data-native-menu="false" style="width: 60%" id="cartype">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+             <!--所属单位-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
+                        </td>
+                        <td style="width: 75%;">
+                            <select name="unitname" id="unit" data-role="none" data-native-menu="false" onchange="judgeunit()"></select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--农机车主-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="carhoster" style="float: left; font-size: 15px; text-align: right;">农机车主：</label>
+                        </td>
+                        <td style="width: 75%;">
+                            <select data-native-menu="false" style="width: 60%" id="owner" onchange="ownerchange()">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--车主电话-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="tel" style="float: left; font-size: 15px; text-align: right;">车主电话：</label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input type="text" name="tel" id="tel" style="text-align: center;" disabled="disabled" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--备注-->
+            <div class="ui-field-contain" data-controltype="textinput">
+                <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
+                <!--有CSS样式-->
+                <textarea id="textarea"></textarea>
+            </div>
+        </div>
+
+        <div data-role="footer">
+            <!--删除与保存按钮-->
+            <div>
+                <label id="caradd" style="color: #f00; display: none;">请填写农机编号！</label>
+                <br />
+                <div data-role="navbar">
+                    <ul>
+                        <li><a data-role="button" class="ui-btn ui-state-disabled" id="deletetools" data-inline="true" onclick="deleteTools();">删 除</a></li>
+                        <li><a data-role="button" class="ui-btn" id="addtools" data-inline="true" onclick="addTools();">添加</a></li>
+                        <li><a data-role="button" class="ui-btn ui-state-disabled" id="updatetools" data-inline="true" onclick="updateTools();">修改</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

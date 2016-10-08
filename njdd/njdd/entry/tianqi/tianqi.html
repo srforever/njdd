@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=false">
+    <title>农机综合调度指挥系统</title>
+      <script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+
+    <link rel="stylesheet" href="../../src/njdd/conduct/conduct.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+  <!--  <link href="../../src/njdd/tianqi/weather.css" rel="stylesheet" />-->
+        <style type="text/css">
+        #weather {
+            height: 180px;
+            background-color: #fff;
+            padding-left: 10px;
+            padding-right: 10px;
+            position: absolute;
+            bottom: 20px;
+            font-size: 12px;
+            right: 10px;
+            border-radius: 3px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+        }
+        .weather{
+            width: 60px;
+            padding-left: 8px;
+            display: inline-block;
+        }
+
+        #tip {
+	background-color: #fff;
+	padding-left: 20px;
+	padding-right: 20px;
+	position: absolute;
+	font-size: 12px;
+	right: 30px;
+	top: 70px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	line-height: 30px;
+}
+
+         .districtsList {
+            height: 45px;
+            background-color: #fff;
+            padding-left: 10px;
+            padding-right: 10px;
+            border: 1px solid #969696;
+            position: absolute;
+            font-size: 12px;
+            right: 18%;
+            bottom: 12%;
+            border-radius: 3px;
+            line-height: 45px;
+                 }
+    </style>
+
+
+
+
+</head>
+    <body>
+      
+        <div data-role="page" id="main-page">
+            <div data-role="header" id="main-header">
+                <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home"  >首页</a>
+                <h1>查询天气</h1>
+              
+            </div>
+
+            <!--加载地图-->
+            <div data-role="main" class="ui-content"  id="main-content">
+                <div id="container" style="width: 100%">
+                </div>
+            </div>
+
+            <!--查询农机状态-->
+            <!--     <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-fullscreen="true" id="Div1">-->
+            <div data-role="footer" data-tap-toggle="false" data-fullscreen="true" style="text-align: center" id="main-footer" align="center">
+           
+                 
+                     <a href="#" data-role="button" id="condouctpage_querybtn">&nbsp;查&nbsp;&nbsp;询&nbsp;</a>
+               
+            </div>
+        </div>
+        
+        <div id="tip" style="line-height: 24px"></div>
+       <div class="districtsList">
+    省：<select id='province' style="width:50px" onchange='amapAdcode.createCity(this.value)'></select>
+    市：<select id='city' style="width:50px" onchange='amapAdcode.createDistrict(this.value)'></select>
+    区：<select id='district' style="width:50px" ></select>
+</div>
+    </body>
+<script src="../../src/njdd/tianqi/tianqi.js"></script>
+ <script src="http://webapi.amap.com/maps?v=1.3&key=b50e929901670e648359dd8fc0aae71a&plugin=AMap.DistrictSearch"></script>
+   <script type="text/javascript">
+       var amapAdcode = {};
+       amapAdcode._district = new AMap.DistrictSearch({//高德行政区划查询插件实例
+           subdistrict: 1,   //返回下一级行政区
+           showbiz: false
+       });
+       amapAdcode._overlay = [];//行政区划覆盖物
+       amapAdcode.createSelectList = function (selectId, list) {//生成下拉列表
+           var selectList = document.getElementById(selectId);
+           selectList.innerHTML = '';
+           selectList.add(new Option('--请选择--'));
+           for (var i = 0, l = list.length, option; i < l; i++) {
+               option = new Option(list[i].name);
+               option.setAttribute("value", list[i].name);
+               selectList.add(option);
+           }
+       }
+       amapAdcode.search = function (adcodeLevel, keyword, selectId) {//查询行政区划列表并生成相应的下拉列表
+           var me = this;
+           if (adcodeLevel == 'district' || adcodeLevel == 'city') {//第三级时查询边界点
+               this._district.setExtensions('all');
+           } else {
+               this._district.setExtensions('base');
+           }
+           this._district.setLevel(adcodeLevel); //行政区级别
+           this._district.search(keyword, function (status, result) {//注意，api返回的格式不统一，在下面用三个条件分别处理
+               var districtData = result.districtList[0];
+               if (districtData.districtList) {
+                   me.createSelectList(selectId, districtData.districtList);
+               } else if (districtData.districts) {
+                   me.createSelectList(selectId, districtData.districts);
+               } else {
+                   document.getElementById(selectId).innerHTML = '';
+               }
+
+           });
+       }
+
+       amapAdcode.clear = function (selectId) {//清空下拉列表
+           var selectList = document.getElementById(selectId);
+           selectList.innerHTML = '';
+       }
+       amapAdcode.createProvince = function () {//创建省列表
+           this.search('country', '中国', 'province');
+       }
+       amapAdcode.createCity = function (provinceAdcode) {//创建市列表
+           this.search('province', provinceAdcode, 'city');
+           this.clear('district');
+           this.clear('street');
+       }
+       amapAdcode.createDistrict = function (cityAdcode) {//创建区县列表
+           this.search('city', cityAdcode, 'district');
+           this.clear('district');
+       }
+
+       amapAdcode.createProvince();
+
+
+
+</script>  
+</html>

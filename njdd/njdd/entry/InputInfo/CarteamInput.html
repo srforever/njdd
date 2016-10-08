@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>农机综合调度指挥系统</title>
+        <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css"/>
+        <link rel="stylesheet" href="../../src/njdd/execution/exec.css"/>
+        <script src="../../dep/jquery-mobile/jquery.js"></script>
+        <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+        <script type="text/javascript" src="../../src/common/config.js"></script>
+        <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
+        <script src="../../src/njdd/InputInfo/CarteamInput.js"></script>
+        <script src="../../src/common/classie.js"></script>
+        <script src="../../src/common/getmessages.js"></script>
+         <!--textarea样式-->
+        <style type="text/css"> 
+           #textarea { overflow: hidden; width: 100%; min-height: 150px; padding:10px; } 
+       </style>
+        <script src="../../src/njdd/InputInfo/autoTextarea.js"></script>
+        
+    </head>
+    <body>
+        <div data-role="page" id="carteaminputpage">
+            <div data-role="header" data-tap-toggle="false" data-fullscreen="true" id="Div5">
+                <a data-role="button" href="InfoInput.html" data-ajax="false" data-icon="back">返回</a>
+                <h1>车队信息编辑</h1>
+            </div>
+            <div data-role="content">
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 23%">
+                                <label style="float: left; font-size: 15px; text-align: right;">车队名称:</label>
+                            </td>
+                            <td style="width: 75%;">
+                                <select data-native-menu="false" id="carteamname" onchange="teamchange()">
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 23%">
+                                <label style="float: left; font-size: 15px; text-align: right;">车队名称:</label>
+                            </td>
+                            <td style="width: 76%;">
+                                <input type="text" name="teamnameinput" style="text-align: center;" id="teamnameinput" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 23%">
+                                <label for="teamname" style="float: left; font-size: 15px; text-align: right;">所属单位：</label>
+                            </td>
+                            <td style="width: 75%;">
+                                <select data-native-menu="false" name="unitname" id="unitid" onchange="judgeunit_user()"></select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 23%">
+                                <label style="float: left; font-size: 15px; text-align: right;">车队队长:</label>
+                            </td>
+                            <td style="width: 75%;">
+                                <select data-native-menu="false" id="teamcaptain" onchange="captainchange()">
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 23%">
+                                <label for="tel1" style="float: left; font-size: 15px; text-align: right;">队长电话：</label>
+                            </td>
+                            <td style="width: 76%;">
+                                <input type="text" name="" id="captainphone" style="text-align: center;" disabled="disabled" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 23%">
+                                <label style="float: left; font-size: 15px; text-align: right;">车队人员：</label>
+                            </td>
+                            <td style="width: 75%;">
+                                <a data-role="button" href="teammember.html">一键查看</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="ui-field-contain" data-controltype="textinput">
+                    <p style="float: left; font-size: 15px; text-align: right;">备注：</p>
+                    <!--有CSS样式-->
+                    <textarea id="textarea"></textarea>
+                </div>
+            </div>
+
+            <div data-role="footer">
+                <!--删除与保存按钮-->
+                <div>
+                    <label id="teamadd" style="color: #f00; display: none;">请填写车队名称</label>
+                    <br />
+                    <div data-role="navbar">
+                        <ul>
+                            <li><a data-role="button" class="ui-btn ui-state-disabled" id="deleteteam" data-inline="true" onclick="deleteTeam();">删 除</a></li>
+                            <li><a data-role="button" class="ui-btn" id="addteam" data-inline="true" onclick="addTeam();">添加</a></li>
+                            <li><a data-role="button" class="ui-btn ui-state-disabled" id="updateteam" data-inline="true" onclick="updateTeam();">修改</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+<script src="../../dep/tmpl.js"></script>
+<script type="text/html" id="tmpl_teaminfopage_detailinfo">
+    <li style="border-bottom:0.5px dotted #c4c0c0;">
+        <a href="teammemberinfo.html" id="<%=id%>" onclick="teaminfopageclick(this.id)" data-transition="slide">
+            <label  data-inset="true"  data-theme="d" data-role="list-divider">农机手：<%=name%>  <span class="ui-li-count">电话：<%=phone%></span></label> 
+        </a>
+    </li>
+</script>
+<script type="text/html" id="user_tmpl">
+    <label for="add_<%=id%>"><%=name%>(<%=phone%>)</label>
+    <input type="checkbox" name="user" id="add_<%=id%>" value="<%=id%>" />
+</script>
+   
+</html>

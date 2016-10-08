@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>农机综合调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script src="../../dep/tmpl.js"></script>
+      <script type="text/javascript" src="../../src/common/config.js"></script>
+</head>
+<body>
+    <div data-role="page" id="persmessage">
+        <div data-role="header">
+            <a data-role="button" href="message.html" data-ajax="false" data-icon="back">返回</a>
+            <h1>具体信息管理</h1>
+        </div>
+        <!--具体信息-->
+        <div data-role="main" class="ui-content">
+            <div>
+                <ul data-role="listview" id="persmessage_listview">
+                </ul>
+            </div>
+        </div>
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            <label>
+                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                <span class="input-group-btn"style="float:right">
+                    <button class="btn btn-warning btn-sm" id="btn-chat" onclick="diaoyong()">
+                        发送
+                    </button>
+                </span>
+            </label>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="../../src/common/config.js"></script>
+<script src="../../src/njdd/message/persmessage.js"></script>
+<script src="../../src/common/getmessages.js"></script>
+</html>
+

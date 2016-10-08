@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>农机综合调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" href="../../src/njdd/conduct/conduct.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/common/dojiconfig.js"></script>
+    <script src="../../src/common/getmessages.js"></script>
+</head>
+<body>
+    <div data-role="page" id="detailinfopage">
+        <div data-role="header">
+            <a data-role="button" href="njinfo.html" data-icon="back" data-transition="slide">返回</a>
+            <h1>指挥调度</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <!--具体信息-->
+            <div class="ui-grid-b">
+                <div class="ui-block-a" style="border: 1px solid white;"><span>农机车类型</span></div>
+                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_carname"></span></div>
+
+                <div class="ui-block-a" style="border: 1px solid white;"><span>农机手姓名</span></div>
+                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_username"></span></div>
+
+                <div class="ui-block-a" style="border: 1px solid white;"><span>马力</span></div>
+                <div class="ui-block-b" style="border: 1px solid white;"><span id="detailinfopage_power"></span></div>
+            </div>
+        </div>
+
+        <!--加入表单-->
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" data-fullscreen="true" id="page-footer">
+            <form method="post" action="demoform.php">
+                <div class="ui-field-contain">
+                    <label for="info">任务指令编辑:</label>
+                    <textarea  id="detailinfopage_smsinfo"></textarea>
+                </div>
+                <div align="center">
+                    <a href="#" data-role="button" data-theme="a" data-inline="true" id="detailinfopage_smsbtn" onclick="detailinfopage_smsbtn_click()">发送OK</a>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+
+
+</body>
+
+</html>

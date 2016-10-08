@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>面积统计</title>
+        <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.min.css"/>
+        <link rel="stylesheet" href="../../src/njdd/statistics/css/area.css" />
+        <script src="../../dep/jquery-1.8.3.min.js"></script>
+        <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+        <script src="../../dep/echarts/echarts.js"></script>
+        <script src="../../src/common/getmessages.js"></script>
+    </head>
+    <body>
+        <div data-role="page"  id="chart-page">
+            <div data-role="header" class="ui-bar-a ui-header" role="banner" id="page-header">
+                <a data-role="button" href="../mainpage.html" data-ajax="false" data-icon="home">首页</a>
+                <h1>面积统计</h1>
+            </div>
+            <div data-role="content" class="ui-content"  role="main" id="page-content">
+                <div id="chart">
+                </div>
+            </div>
+            <div data-role="footer" data-tap-toggle="false" class="ui-bar-a ui-footer" id="page-footer"> 
+                <div data-role="fieldcontain">
+                    <label for="select-querytype" >请选择：</label>
+                    <select name="select-querytype" id="select-querytype" data-inline="false">
+                        <option value="thisWeek">这周统计</option>
+                        <option value="lastWeek">上周统计</option>
+                        <option value="thisMonth">本月统计</option>
+                        <option value="lastMonth">上月统计</option>
+                        <option value="firstHalfYear">上半年统计</option>
+                        <option value="secondHalfYear">下半年统计</option>
+                    </select>
+                </div>
+                <div class="ui-grid-solo">
+                    <a data-role="button"  id="btn_query" class="ui-btn" style="width:100% ">开始查询</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="../../src/common/classie.js"></script>
+    <script type="text/javascript" src="../../src/common/config.js"></script>
+    <script type="text/javascript" src="../../src/njdd/statistics/area.js"></script>
+</html>
+

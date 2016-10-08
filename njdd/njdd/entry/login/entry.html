@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>滴滴农机智能调度指挥系统</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script src="../../src/common/config.js"></script>
+    <script type="text/javascript">
+        $(
+    function () {
+        $('.error').hide();
+        //$('input').each(
+        //    function () {
+        //        $(this).blur(
+        //            function () {
+        //                var name = $(this).attr('name'); //获得表单name属性的值
+        //                var val = $(this).val();
+        //                var len = val.length;
+        //                if (name=='user_name'||name=='user_tel'||name=='user_passworld'||name=="user_passworldsure") {
+        //                    if ($(this).val().length < 1) {
+        //                        $(this).siblings().find('.error').show();
+        //                        alert($(this).siblings().val());
+        //                    }
+        //                }
+
+        //            }
+        //        );
+        //    }
+        //);
+
+    }
+    );
+    </script>
+
+    <style type="text/css">
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div data-role="page" id="entrypage_signin">
+        <div data-role="header">
+            <h1>滴滴农机智能调度指挥系统</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="home">登录</a></li>
+                    <li><a href="#entrypage_register" data-icon="arrow-r">注册</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="content" align="center">
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="user_name">
+                                用户电话：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="user_name" id="entrypage_signin_tel" value="15255094542" type="tel" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="user_key">
+                                用户密码：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="user_key" id="entrypage_signin_password" value="123" type="password" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <!--../mainpage.html-->
+                <a href="#" id="entrypage_signin_btn" data-ajax="false" data-role="button" onclick="entrypage_signin_btn_click()" data-inline="true" class="ui-btn-center">一键登录</a>
+            </div>
+
+        </div>
+
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            <h1></h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="entrypage_register">
+        <div data-role="header">
+            <h1>农机远程指挥调度系统</h1>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#entrypage_signin" data-icon="home">登录</a></li>
+                    <li><a href="#" class="ui-btn-active ui-state-persist" data-icon="arrow-r">注册</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="content" align="center">
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <label for="user_name">
+                                用户姓名(*)：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="user_name" id="entrypage_register_name" value="" />
+                        </td>
+                        <td>
+                            <span class="error">姓名不能为空</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <label for="user_tel">
+                                用户电话(*)：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="user_tel" id="entrypage_register_tel" value="" />
+                        </td>
+                        <td>
+                            <span class="error">电话不能为空</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <label for="user_key">
+                                用户密码(*)：  
+                            </label>
+                        </td>
+                        <td>
+                            <input name="user_password" type="password" id="entrypage_register_password" value="" />
+                        </td>
+                        <td>
+                            <span id="ip" class="error">密码不能为空</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="ui-field-contain" data-controltype="textinput"   >
+                <table style="width: 100%" >
+                    <tr>
+                        <td >
+                            <label for="con_key">
+                                密码确认(*)：  
+                            </label>
+                        </td>
+                        <td >
+                            <input name="user_passwordsure" type="password" id="entrypage_register_passwordsure" value="" />
+                        </td>
+                        <td>
+                            <span id="ib" class="error">确认密码不能为空</span>
+                            <span id="in" class="error">确认密码与密码不匹配</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+           <div class="ui-field-contain" data-controltype="textinput">
+                <table  style="width: 100%">
+                    <tr>
+                        <td >
+                            <label for=""  >
+                              角色选择(*)：  
+                            </label>
+                        </td>
+                        <td  style="width: 63.3%">
+                            <select   id="personinfopage_unitName" >
+                                <option value="1">农机手</option>
+                                <option value="2">农场主</option>
+                            </select>
+                        </td>
+                         <td>
+                          
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            
+
+           <!-- <div>
+                <a href="#" id="entrypage_register_btn" onclick="entrypage_register_btn_click()" data-role="button" data-ajax="false" data-inline="true" class="ui-btn-center">一键注册</a>
+            </div>-->
+        </div>
+
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+            
+                <a href="#" id="entrypage_register_btn" onclick="entrypage_register_btn_click()" data-role="button" data-ajax="false" data-inline="true" class="ui-btn-center" style="width: 100%;">一键注册</a>
+           
+        </div>
+    </div>
+    <!-- a start -->
+    <!--<a href="#confirm-dialog">如何设置confirm dialog</a>-->
+    <!-- a end -->
+
+    <!-- dialog container start -->
+    <div data-role="dialog" id="confirm-dialog">
+
+        <!-- 页眉部分start -->
+        <div data-role="header">
+            <h1>提示信息</h1>
+        </div>
+        <!-- 页眉部分end -->
+
+        <!-- content部分start -->
+        <div data-role="content">
+            <p id="confirm-dialog_info"></p>
+            <a data-role="button" data-rel="back">返回</a>
+        </div>
+        <!-- content部分end -->
+
+    </div>
+    <!-- dialog container end -->
+
+    <script src="../../src/common/globalconfig.js"></script>
+</body>
+</html>
+

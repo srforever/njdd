@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>滴滴农机智能调度指挥系统</title>
+    <link rel="stylesheet" href="../../dep/jquery-mobile/jquery.mobile-1.4.5.css" />
+    <script src="../../dep/jquery-mobile/jquery.js"></script>
+    <script src="../../dep/jquery-mobile/jquery.mobile-1.4.5.js"></script>
+    <script src="../../src/common/config.js"></script>
+    <script src="../../src/njdd/set/personinfo.js"></script>
+    <script>
+       
+    </script>
+
+</head>
+<body>
+
+    <div data-role="page" id="personinfopage">
+        <div data-role="header" data-position="fixed">
+            <a id="a_back" data-role="button" data-rel="back" href="set.html" class="ui-btn-left" data-ajax="false" data-icon="back">返回</a>
+            <h3>个人信息  
+            </h3>
+            <a id="a_save" data-role="button" href="#" data-icon="check" data-iconpos="left" data-ajax="false" class="ui-btn-right" onclick="tijiao()">保存  
+            </a>
+        </div>
+
+        <div data-role="content" class="ui-content">
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="name" style="float: right; font-size: 15px; text-align: right;">
+                               用户名：  
+                            </label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input name="name" id="personinfopage_name" placeholder="您的姓名..." value="" style="text-align: center;" type="text" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="mobile_phone" style="float: right; font-size: 15px; text-align: right;">
+                                手机：  
+                            </label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input name="mobile_phone" id="personinfopage_tel" placeholder="您的手机号码..." value="" style="text-align: center;" type="tel" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="email" style="float: right; font-size: 15px; text-align: right;">
+                                邮箱：  
+                            </label>
+                        </td>
+                        <td style="width: 76%;">
+                            <input name="email" id="personinfopage_email" placeholder="您的E-Mail地址..." style="text-align: center;" value="" type="email"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+           
+
+            <div class="ui-field-contain" >
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="" style="float: right; font-size: 15px; text-align: right;" >
+                                所属单位：  
+                            </label>
+                        </td>
+                        <td style="width: 75%;">
+                            <select   id="personinfopage_unitName" onchange="judgeunit()">
+                               
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui-field-contain" data-controltype="selectinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="" style="float: right; font-size: 15px; text-align: right;">
+                                车队：  
+                            </label>
+                        </td>
+                        <td style="width: 75%;">
+                                <select id="personinfopage_teamName">
+                                </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="ui-field-contain" data-controltype="textinput">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 23%">
+                            <label for="mima" style="float: right; font-size: 15px; text-align: right;">
+                                密码：  
+                            </label>
+                        </td>
+                        <td style="width: 76%">
+                            <input name="mima" id="personinfopage_password" placeholder="您的密码..." value="" type="tel" />
+                        </td>
+                    </tr>
+                </table>
+               
+            </div>
+            
+            
+        </div>
+         
+        <div data-role="footer" style="bottom: 0; position: absolute !important; top: auto !important; width: 100%;">
+           
+        </div>
+    </div>
+    
+    
+      <!-- dialog container start -->
+    <div data-role="dialog" id="confirm-dialog">
+
+        <!-- 页眉部分start -->
+        <div data-role="header">
+            <h1>提示信息</h1>
+        </div>
+        <!-- 页眉部分end -->
+
+        <!-- content部分start -->
+        <div data-role="content">
+            <p id="confirm-dialog_info"></p>
+            <a data-role="button" data-rel="back">返回</a>
+        </div>
+        <!-- content部分end -->
+
+    </div>
+    
+
+
+</body>
+
+</html>
