@@ -6,7 +6,8 @@
         version     = "0.1"
         versionCode = "10" >
 		        <!-- versionCode is optional and Android only -->
-        <preference name="phonegap-version" value="3.5.0" />
+				<!--  <preference name="phonegap-version" value="3.5.0" />-->
+        <preference name="phonegap-version" value="cli-6.3.0" />
     <name>滴滴农机</name>
     <description>
      滴滴农机
