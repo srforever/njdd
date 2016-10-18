@@ -77,20 +77,45 @@
             );
         })();
 
+        //$("#btn_query").on("click", function () {
+        //    // option value
+        //    var selVal = $("#select-querytype").val();
+        //    var paramStr = "?token=1&userid=" + userid + "&queryType=" + selVal;
+        //    console.log(domain + url_statAreaOption + paramStr);
+        //    $.ajax({
+        //        type: "get",
+        //        async: true, //异步执行
+        //        url: domain + url_statAreaOption + paramStr,
+        //        dataType: "json",
+        //        timeout: 3000,
+        //        success: function (result) {
+        //            if (result.message.statusCode == 200) {
+        //                setChart(selVal, result);
+        //            } else {
+        //                alert("出错,查询参数有误");
+        //            }
+        //        },
+        //        error: function (errorMsg) {
+        //            alert("出错,无法访问数据\n" + errorMsg.toString());
+        //        }
+        //    });
+        //});
+
+
         $("#btn_query").on("click", function () {
             // option value
-            var selVal = $("#select-querytype").val();
-            var paramStr = "?token=1&userid=" + userid + "&queryType=" + selVal;
-            console.log(domain + url_statAreaOption + paramStr);
+         //   var selVal = $("#select-querytype").val();
+            var paramStr = "?token=1&userid=" + userid + "&starttime=" + document.querySelector("#input_startime").value + "%2011:49:45&endtime=" + document.querySelector("#input_endtime").value + "%2011:49:45";
+            console.log(domain + url_statAreaOption1 + paramStr);
             $.ajax({
                 type: "get",
                 async: true, //异步执行
-                url: domain + url_statAreaOption + paramStr,
+                url: domain + url_statAreaOption1 + paramStr,
                 dataType: "json",
                 timeout: 3000,
                 success: function (result) {
                     if (result.message.statusCode == 200) {
-                        setChart(selVal, result);
+                        setChart(result);
                     } else {
                         alert("出错,查询参数有误");
                     }
@@ -100,6 +125,10 @@
                 }
             });
         });
+
+
+
+
 
         /**
          * 右滑
@@ -132,59 +161,68 @@
         /**
          * 设置图表
          */
-        function setChart(selVal, result) {
-            var type = getYAxleType(selVal);
+        function setChart(result) {
+         //   var type = getYAxleType();
             var datas = result.result.datas;
             // 清空option数据
             option.xAxis[0].data = [];
             option.series[0].data = [];
-            if (type == "day") {
-                for (var i = 0; i < datas.length; i++) {
-                    if (datas[i].area < 0.01) {
-                        datas[i].area = 0;
-                        option.xAxis[0].data.push(new Date(datas[i].date).Format("yyyy-MM-dd"));
-                        option.series[0].data.push((datas[i].area * 100000000).toFixed(2));
-                    } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
-                }
-            } else if (type == "week") {
-                for (var i = 0; i < datas.length; i++) {
-                    option.xAxis[0].data.push("第" + datas[i].week.toString() + "周");
-                    if (datas[i].area < 0.01) {
-                        datas[i].area = 0;
-                        option.series[0].data.push((datas[i].area).toFixed(2));
-                    } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
-                }
-            } else if (type == "month") {
-                for (var i = 0; i < datas.length; i++) {
-                    option.xAxis[0].data.push(datas[i].month.toString() + "月");
-                    if (datas[i].area < 0.01) {
-                        datas[i].area = 0;
-                        option.series[0].data.push((datas[i].area).toFixed(2));
-                    } else { option.series[0].data.push((datas[i].area).toFixed(2)); }
-                }
+
+            for (var i = 0; i < datas.length; i++) {
+                if (datas[i].area < 0.01) {
+                    datas[i].area = 0;
+                    option.xAxis[0].data.push(new Date(datas[i].date).Format("yyyy-MM-dd"));
+                    option.series[0].data.push((datas[i].area * 100000000).toFixed(2));
+                } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
             }
+
+            //if (type == "day") {
+            //    for (var i = 0; i < datas.length; i++) {
+            //        if (datas[i].area < 0.01) {
+            //            datas[i].area = 0;
+            //            option.xAxis[0].data.push(new Date(datas[i].date).Format("yyyy-MM-dd"));
+            //            option.series[0].data.push((datas[i].area * 100000000).toFixed(2));
+            //        } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
+            //    }
+            //} else if (type == "week") {
+            //    for (var i = 0; i < datas.length; i++) {
+            //        option.xAxis[0].data.push("第" + datas[i].week.toString() + "周");
+            //        if (datas[i].area < 0.01) {
+            //            datas[i].area = 0;
+            //            option.series[0].data.push((datas[i].area).toFixed(2));
+            //        } else { option.series[0].data.push((datas[i].area * 100000000).toFixed(2)); }
+            //    }
+            //} else if (type == "month") {
+            //    for (var i = 0; i < datas.length; i++) {
+            //        option.xAxis[0].data.push(datas[i].month.toString() + "月");
+            //        if (datas[i].area < 0.01) {
+            //            datas[i].area = 0;
+            //            option.series[0].data.push((datas[i].area).toFixed(2));
+            //        } else { option.series[0].data.push((datas[i].area).toFixed(2)); }
+            //    }
+            //}
             myChart.clear();
             myChart.hideLoading();
             myChart.setOption(option);
         }
 
-        function getYAxleType(selVal) {
-            var type = "";
-            if (selVal == "thisWeek") {
-                type = "day";
-            } else if (selVal == "lastWeek") {
-                type = "day";
-            } else if (selVal == "thisMonth") {
-                type = "week";
-            } else if (selVal == "lastMonth") {
-                type = "week";
-            } else if (selVal == "firstHalfYear") {
-                type = "month";
-            } else if (selVal == "secondHalfYear") {
-                type = "month";
-            }
-            return type;
-        }
+        //function getYAxleType(selVal) {
+        //    var type = "";
+        //    if (selVal == "thisWeek") {
+        //        type = "day";
+        //    } else if (selVal == "lastWeek") {
+        //        type = "day";
+        //    } else if (selVal == "thisMonth") {
+        //        type = "week";
+        //    } else if (selVal == "lastMonth") {
+        //        type = "week";
+        //    } else if (selVal == "firstHalfYear") {
+        //        type = "month";
+        //    } else if (selVal == "secondHalfYear") {
+        //        type = "month";
+        //    }
+        //    return type;
+        //}
     });
 
 })(window)

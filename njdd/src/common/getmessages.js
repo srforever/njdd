@@ -56,14 +56,6 @@
 
                 alert("您有未读消息"+a+"条");
 
-
-
-                //  $("<div data-role='dialog' id='message-dialog'><div data-role='header'><h1>提示信息</h1></div><div data-role='content'><p> 你有未读消息</p><a data-role='button' href='message/message.html'>查看</a></div></div>").appendTo("body");
-                //href='http://" + domain + "njdd.web.mobile/entry/message/message.html'
-                //window.location.href = "#message-dialog";
-  
-
-
             }
 
 
