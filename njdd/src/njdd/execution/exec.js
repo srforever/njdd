@@ -79,7 +79,7 @@
 
             AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.Driving', 'AMap.MouseTool', 'AMap.MouseTool', "AMap.MapType", "AMap.OverView", 'AMap.Geolocation', "AMap.RangingTool"], function () {
 
-         //       map.addControl(new AMap.ToolBar());  //加载平移缩放控件
+                map.addControl(new AMap.ToolBar());  //加载平移缩放控件
                 map.addControl(new AMap.Scale());    //加载比例尺    
                 map.addControl(new AMap.OverView());
                 //infoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
