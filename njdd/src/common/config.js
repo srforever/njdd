@@ -1,5 +1,4 @@
-﻿//var domain = "http://120.27.93.15:8080/";
-var domain = "http://115.29.50.133:8080/";
+﻿var domain = "http://120.27.93.15:8080/";
 var url_executionTaskstatus = "njdd.app/rest/v100/execution/taskstatus";
 var url_executionLocation = "njdd.app/rest/v100/execution/location";
 var url_executionProblem = "njdd.app/rest/v100/execution/problem";
