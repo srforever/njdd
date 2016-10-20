@@ -56,83 +56,108 @@ function entrypage_register_btn_click() {
     var name = $("#entrypage_register_name").val();
     var password = $("#entrypage_register_password").val();
     var passwordsure = $("#entrypage_register_passwordsure").val();
-    if (tel == null || tel == "" || password == null || password == "" || name == null || name == "" || passwordsure == null || passwordsure == "") {
-        $("#confirm-dialog_info").html("所有内容都为必填");
-        window.location.href = "#confirm-dialog";
-    } else {
-        if (password == passwordsure) {
+    var havephone = null;
 
-            var data = new Object();
-            data["token"] = "1";
-            data["data"] = new Object();
-            data["data"]["filter"] = new Object();
-            data["data"]["items"] = [];
-            data["data"]["param"] = new Object();
-            data["data"]["param"]["name"] = name;
-            data["data"]["param"]["phone"] = tel;
-            data["data"]["param"]["email"] = '';
-            data["data"]["param"]["password"] = password;
-
-            if (selectval == "2") {
-                
-                data["data"]["param"]["jobroleid"] = '2';
-            }
-            else {
-
-                data["data"]["param"]["jobroleid"] = '1';
-            }
-          
-
-            $.ajax({
-                url: domain + url_addUser,
-                type: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                async: false,
-                data: JSON.stringify(data),
-                dataType: "json",
-                timeout: 3000,
-                success: function (json) {
-                    
-                    var datajson;
-
-                    if (typeof (json) == "object") {
-                        //为对象
-                        datajson = json;
-                    }
-                    else {
-                        //将字符串转换为对象
-                        datajson = JSON.parse(json);
-                    }
-                    if (datajson.result.datas.length > 0) {
-                       
-                        sessionStorage.phone = tel;
-                        sessionStorage.name = datajson.result.datas[0].name;
-                        sessionStorage.userid = datajson.result.datas[0].id;
-                        sessionStorage.email = datajson.result.datas[0].email;
-                        sessionStorage.jobroleid = datajson.result.datas[0].jobroleid;
-                        sessionStorage.password = datajson.result.datas[0].password;
-
-
-                        window.location.href = "../../entry/mainpage.html";
-                    } else {
-                        $("#confirm-dialog_info").html("该手机号码已注册");
-                        window.location.href = "#confirm-dialog";
-                    }
-                },
-                error:function(errorMsg) {
-                    $("#confirm-dialog_info").html(errorMsg);
-                    window.location.href = "#confirm-dialog";
+    $.ajax({
+        type: "get",
+        url: domain + url_getAlluser + "?token=1",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+            $.each(data.result.datas, function (i, item) {
+                if (item.phone == tel) {
+                    havephone = item.phone;
+                  //  alert("该号码已经被注册");
                 }
+
             });
-        } else {
-            $("#confirm-dialog_info").html("密码与确认密码不一致！");
-            window.location.href = "#confirm-dialog";
+
+            adduserinfo();
+
         }
 
+    });
+
+
+    function adduserinfo() {
+        if (tel == null || tel == "" || password == null || password == "" || name == null || name == "" || passwordsure == null || passwordsure == "") {
+            $("#confirm-dialog_info").html("所有内容都为必填");
+            window.location.href = "#confirm-dialog";
+        } else {
+            if ((password == passwordsure) && (havephone == null)) {
+
+                var data = new Object();
+                data["token"] = "1";
+                data["data"] = new Object();
+                data["data"]["filter"] = new Object();
+                data["data"]["items"] = [];
+                data["data"]["param"] = new Object();
+                data["data"]["param"]["name"] = name;
+                data["data"]["param"]["phone"] = tel;
+                data["data"]["param"]["email"] = '';
+                data["data"]["param"]["password"] = password;
+
+                if (selectval == "2") {
+
+                    data["data"]["param"]["jobroleid"] = '2';
+                }
+                else {
+
+                    data["data"]["param"]["jobroleid"] = '1';
+                }
+
+
+                $.ajax({
+                    url: domain + url_addUser,
+                    type: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    async: false,
+                    data: JSON.stringify(data),
+                    dataType: "json",
+                    timeout: 3000,
+                    success: function (json) {
+
+                        var datajson;
+
+                        if (typeof (json) == "object") {
+                            //为对象
+                            datajson = json;
+                        }
+                        else {
+                            //将字符串转换为对象
+                            datajson = JSON.parse(json);
+                        }
+                      
+                            sessionStorage.phone = tel;
+                            sessionStorage.name = datajson.result.datas[0].name;
+                            sessionStorage.userid = datajson.result.datas[0].id;
+                            sessionStorage.email = datajson.result.datas[0].email;
+                            sessionStorage.jobroleid = datajson.result.datas[0].jobroleid;
+                            sessionStorage.password = datajson.result.datas[0].password;
+
+
+                            window.location.href = "../../entry/mainpage.html";
+                        
+                    },
+                    error: function (errorMsg) {
+                        $("#confirm-dialog_info").html(errorMsg);
+                        window.location.href = "#confirm-dialog";
+                    }
+                });
+            }
+
+            else {
+                $("#confirm-dialog_info").html("密码与确认密码不一致或者手机号已被注册");
+                window.location.href = "#confirm-dialog";
+            }
+
+        }
     }
+
+   
 }
 
 

@@ -1,4 +1,12 @@
-﻿var domain = "http://120.27.93.15:8080/";
+﻿//var domain = "http://120.27.93.15:8080/";
+//var domain = "http://localhost:8080/";
+var domain = "http://115.29.50.133:8080/";
+var url_statUsageOption1 = "njdd.app/rest/v100/statistics/usage/test";
+var url_statDistanceOption1 = "njdd.app/rest/v100/statistics/distance/test";
+var url_statOverspeedOption1 = "njdd.app/rest/v100/statistics/overspeed/test";
+var url_statAreaOption1 = "njdd.app/rest/v100/statistics/area/test";
+
+
 var url_executionTaskstatus = "njdd.app/rest/v100/execution/taskstatus";
 var url_executionLocation = "njdd.app/rest/v100/execution/location";
 var url_executionProblem = "njdd.app/rest/v100/execution/problem";
