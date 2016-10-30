@@ -271,7 +271,7 @@ function tijiao() {
     data["data"]["param"]["phone"] = tel;
     data["data"]["param"]["email"] = email;
     data["data"]["param"]["password"] = password;
-    data["data"]["param"]["jobroleid"] = '1';
+    data["data"]["param"]["jobroleid"] = sessionStorage.jobroleid;
     data["data"]["param"]["unitid"] = unitNameid;
     data["data"]["param"]["teamid"] = teamNameid;
     data["data"]["param"]["id"] = ID;

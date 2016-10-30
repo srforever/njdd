@@ -14,3 +14,13 @@ $(document).ready(function () {
         $("#header_personadd").hide();
     }
 });
+
+
+function buttonclick() {
+    if (sessionStorage.jobroleid == "4") {
+
+        window.location.href = "../../entry/mainpagenm.html";
+    } else {
+        window.location.href = "../../entry/mainpage.html";
+    };
+}

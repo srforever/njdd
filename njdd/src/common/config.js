@@ -1,6 +1,11 @@
 ﻿//var domain = "http://120.27.93.15:8080/";
 //var domain = "http://localhost:8080/";
 var domain = "http://115.29.50.133:8080/";
+
+
+var url_addDemandInfo = "njdd.app/rest/v100/info/addDemand";
+var url_getDemandInfo = "njdd.app/rest/v100/info/getDemand";
+
 var url_statUsageOption1 = "njdd.app/rest/v100/statistics/usage/test";
 var url_statDistanceOption1 = "njdd.app/rest/v100/statistics/distance/test";
 var url_statOverspeedOption1 = "njdd.app/rest/v100/statistics/overspeed/test";

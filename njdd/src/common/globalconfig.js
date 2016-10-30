@@ -32,7 +32,13 @@ function entrypage_signin_btn_click() {
                     sessionStorage.tel = tel;
                     sessionStorage.unitid = datajson.result.datas[0].unitid;
                     sessionStorage.password = datajson.result.datas[0].password;
-                    window.location.href = "../../entry/mainpage.html";
+                    if (sessionStorage.jobroleid == "4") {
+
+                        window.location.href = "../../entry/mainpagenm.html";
+                    } else {
+                        window.location.href = "../../entry/mainpage.html";
+                    };
+                  
                 } else {
                     $("#confirm-dialog_info").html("登录失败");
                     window.location.href = "#confirm-dialog";
@@ -101,9 +107,13 @@ function entrypage_register_btn_click() {
 
                     data["data"]["param"]["jobroleid"] = '2';
                 }
-                else {
+                else if (selectval == "1") {
 
                     data["data"]["param"]["jobroleid"] = '1';
+                }
+                else  {
+
+                    data["data"]["param"]["jobroleid"] = '4';
                 }
 
 
@@ -138,8 +148,13 @@ function entrypage_register_btn_click() {
                             sessionStorage.jobroleid = datajson.result.datas[0].jobroleid;
                             sessionStorage.password = datajson.result.datas[0].password;
 
+                            if (sessionStorage.jobroleid == "4") {
 
-                            window.location.href = "../../entry/mainpage.html";
+                                window.location.href = "../../entry/mainpagenm.html";
+                            } else {
+                                window.location.href = "../../entry/mainpage.html";
+                            };
+                           
                         
                     },
                     error: function (errorMsg) {
