@@ -253,8 +253,8 @@
             wkt = [];
             var paths = geometry.getPath();
             for (var i in paths) {
-                liebiao3[0] = paths[i].D;
-                liebiao3[1] = paths[i].J;
+                liebiao3[0] = paths[i].getLng();
+                liebiao3[1] = paths[i].getLat();
                 wkt.push(liebiao3.join(" "));
 
             }
